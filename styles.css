@@ -113,7 +113,8 @@ section {
     content: "";
     display: block;
     height: 1px;
-    width: 300px;
+    flex: 1;
+    max-width: 300px;
     background-color: var(--border-color);
     margin-left: 20px;
 }
@@ -244,6 +245,7 @@ section {
 .hero {
     padding-top: 150px;
     position: relative;
+    overflow: hidden;
 }
 
 .hero::before {
@@ -284,6 +286,7 @@ section {
     line-height: 1.1;
     letter-spacing: -0.04em;
     margin-bottom: 10px;
+    overflow-wrap: break-word;
 }
 
 .hero-subtitle {
@@ -293,6 +296,7 @@ section {
     color: var(--text-secondary);
     letter-spacing: -0.03em;
     margin-bottom: 30px;
+    overflow-wrap: break-word;
 }
 
 .hero-desc {
@@ -305,6 +309,7 @@ section {
 .hero-actions {
     display: flex;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
 /* 
@@ -940,6 +945,8 @@ section {
     border-radius: var(--radius-sm);
     border: 1px solid rgba(99, 102, 241, 0.1);
     display: inline-block;
+    max-width: 100%;
+    word-break: break-word;
 }
 
 .project-tech-list li {
@@ -1149,7 +1156,7 @@ footer p {
 
 @media (max-width: 768px) {
     .section-title::after {
-        width: 100px;
+        max-width: 100px;
     }
 
     .nav-links {
@@ -1237,4 +1244,12 @@ footer p {
     font-size: 0.82rem;
     color: var(--text-secondary);
     line-height: 1.5;
+}
+
+@media (max-width: 400px) {
+    .toast {
+        right: 16px;
+        left: 16px;
+        max-width: calc(100vw - 32px);
+    }
 }
