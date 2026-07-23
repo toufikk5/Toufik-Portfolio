@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | John Doe</title>
+    <meta name="description" content="Personal portfolio of John Doe, a software engineer and designer.">
+    <!-- Using Inter font for a modern, clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar fade-in">
+        <div class="nav-container">
+            <a href="#home" class="logo">TK.</a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero section-reveal">
+            <div class="container">
+                <p class="hero-greeting">TOUFIK</p>
+                <h1 class="hero-title">Computer Science Student.</h1>
+                <h2 class="hero-subtitle">Building software, AI projects, and modern web experiences.</h2>
+                <p class="hero-desc">
+                    I'm a Computer Science student at USTHB passionate about web development, AI applications, and
+                    software engineering. I enjoy turning ideas into real products, participating in hackathons, and
+                    continuously learning modern technologies.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">Explore My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-reveal">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            Hello! My name is <span class="highlight">Toufik</span> and I enjoy creating things that
+                            live on the internet. My interest in <span class="highlight">web development</span> and
+                            software engineering started early, driving me to constantly learn and build.
+                        </p>
+                        <p>
+                            Fast-forward to today, and I am currently a <span class="highlight">Computer Science
+                                student</span> at USTHB. I've had the opportunity to participate in hackathons, build
+                            side projects, and collaborate with other developers.
+                        </p>
+                        <p>
+                            My main focus these days is building accessible, inclusive products and <span
+                                class="highlight">AI applications</span>. I enjoy turning complex problems into elegant,
+                            minimalist <span class="highlight">digital experiences</span>.
+                        </p>
+                    </div>
+                    <div class="about-profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar"></div>
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-name">Toufik</h3>
+                            <p class="profile-role">Software Engineer</p>
+                            <div class="profile-location">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Algiers, DZ
+                            </div>
+                        </div>
+                        <div class="profile-badge">
+                            <span class="status-dot"></span> Available for opportunities
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills section-reveal">
+            <div class="container">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">Here are a few technologies I've been working with recently:</p>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">HTML5</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill intermediate"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="13.5" cy="6.5" r=".5"></circle>
+                                <circle cx="17.5" cy="10.5" r=".5"></circle>
+                                <circle cx="8.5" cy="7.5" r=".5"></circle>
+                                <circle cx="6.5" cy="12.5" r=".5"></circle>
+                                <path
+                                    d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z">
+                                </path>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">CSS3</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill intermediate"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill intermediate"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="4 17 10 11 4 5"></polyline>
+                                <line x1="12" y1="19" x2="20" y2="19"></line>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill learning"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                                <rect x="9" y="9" width="6" height="6"></rect>
+                                <line x1="9" y1="1" x2="9" y2="4"></line>
+                                <line x1="15" y1="1" x2="15" y2="4"></line>
+                                <line x1="9" y1="20" x2="9" y2="23"></line>
+                                <line x1="15" y1="20" x2="15" y2="23"></line>
+                                <line x1="20" y1="9" x2="23" y2="9"></line>
+                                <line x1="20" y1="14" x2="23" y2="14"></line>
+                                <line x1="1" y1="9" x2="4" y2="9"></line>
+                                <line x1="1" y1="14" x2="4" y2="14"></line>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">C#</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill intermediate"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">SQL</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill advanced"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="6" y1="3" x2="6" y2="15"></line>
+                                <circle cx="18" cy="6" r="3"></circle>
+                                <circle cx="6" cy="18" r="3"></circle>
+                                <path d="M18 9a9 9 0 0 1-9 9"></path>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">Git</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill advanced"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">GitHub</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill advanced"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">VS Code</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill advanced"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">Postman</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill learning"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">Prompt Eng.</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill intermediate"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z">
+                                </path>
+                            </svg>
+                            <div class="skill-title-group">
+                                <span class="skill-name">AI Tools</span>
+                                <span class="skill-subtitle">Experience</span>
+                            </div>
+                        </div>
+                        <div class="skill-confidence">
+                            <div class="confidence-track">
+                                <div class="confidence-fill intermediate"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section-reveal">
+            <div class="container">
+                <h2 class="section-title">Selected Projects</h2>
+                <div class="featured-project-card">
+                    <div class="project-content">
+                        <p class="project-overline">FEATURED WORK</p>
+                        <h3 class="project-title">LearnFirst</h3>
+                        <p class="project-subtitle">AI Startup Branding Assistant</p>
+                        <p class="project-desc">
+                            LearnFirst is an AI-powered web application that helps startup founders receive personalized
+                            branding recommendations using a Weighted Scoring Model (WSM) and AI-generated insights.
+                        </p>
+
+                        <div class="project-tech-inline">
+                            HTML &bull; CSS &bull; JavaScript &bull; WSM &bull; LLM
+                        </div>
+
+                        <div class="project-role">
+                            <h4>My Role</h4>
+                            <ul>
+                                <li>Frontend Development</li>
+                                <li>UI Design</li>
+                                <li>Presentation</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="#" id="btn-view-project" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                    <div class="project-image-wrapper">
+                        <div class="project-gallery">
+                            <div class="gallery-view" id="gallery-view">
+                                <!-- Images will be injected here by script.js -->
+                            </div>
+                            <div class="gallery-controls-container">
+                                <div class="gallery-counter" id="gallery-counter">1 / 4</div>
+                                <div class="gallery-nav-row">
+                                    <button id="gallery-prev" class="btn btn-secondary gallery-btn btn-sm"
+                                        aria-label="Previous Screenshot">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="15 18 9 12 15 6"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="gallery-dots" id="gallery-dots"></div>
+                                    <button id="gallery-next" class="btn btn-secondary gallery-btn btn-sm"
+                                        aria-label="Next Screenshot">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="gallery-label" id="gallery-label">Home</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience section-reveal">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div class="experience-list">
+                    <div class="experience-item section-reveal">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Hackiwha 2026 Participant <span>@ Hackiwha Innovation
+                                    Challenge</span></h3>
+                            <span class="experience-date">2026</span>
+                        </div>
+                        <ul class="experience-details">
+                            <li>Collaborated in a multidisciplinary team to design and build an AI-powered web
+                                application.</li>
+                            <li>Contributed to frontend development using HTML, CSS and JavaScript.</li>
+                            <li>Designed and improved the user interface to create a clean and intuitive experience.
+                            </li>
+                            <li>Worked with Git and collaborated with teammates throughout the project.</li>
+                            <li>Presented the final project in front of judges and attendees.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item section-reveal">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Computer Science Student <span>@ USTHB – University of Science
+                                    and Technology Houari Boumediene</span></h3>
+                            <span class="experience-date">2024 – Present</span>
+                        </div>
+                        <ul class="experience-details">
+                            <li>Studying Computer Science.</li>
+                            <li>Learning software engineering, algorithms and web development.</li>
+                            <li>Building personal projects to strengthen frontend development and problem-solving
+                                skills.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section-reveal">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="contact-desc">
+                    I'm always open to connecting with developers, recruiters, and people who enjoy building great
+                    software. Whether you have a question, a project idea, or just want to say hello, feel free to reach
+                    out.
+                </p>
+                <div class="social-links">
+                    <a href="#" id="contact-email" class="social-link" aria-label="Email">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>Email</span>
+                    </a>
+                    <a href="#" id="contact-linkedin" class="social-link" aria-label="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/toufikk5" class="social-link" aria-label="GitHub" target="_blank"
+                        rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.instagram.com/____toufik_____/" class="social-link" aria-label="Instagram"
+                        target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; toufik</p>
+        </div>
+    </footer>
+
+    <!-- Fullscreen Gallery Modal -->
+    <div id="gallery-modal" class="gallery-modal" aria-hidden="true">
+        <div class="gallery-modal-backdrop"></div>
+        <div class="gallery-modal-content">
+            <button id="modal-close" class="modal-close-btn" aria-label="Close modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <button id="modal-prev" class="modal-nav-btn modal-prev" aria-label="Previous Image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <img id="modal-image" src="" alt="Fullscreen Screenshot">
+            <button id="modal-next" class="modal-nav-btn modal-next" aria-label="Next Image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+            <div id="modal-label" class="modal-label">Home</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
