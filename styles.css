@@ -59,8 +59,8 @@ html {
 body {
     background-color: var(--bg-primary);
     background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
     background-position: top left;
     color: var(--text-primary);
@@ -80,11 +80,12 @@ body::after {
     z-index: -3;
     pointer-events: none;
     background: 
-        radial-gradient(circle at 10% 25%, rgba(14, 165, 233, 0.035) 0%, transparent 600px),
-        radial-gradient(circle at 90% 40%, rgba(14, 165, 233, 0.035) 0%, transparent 600px),
-        radial-gradient(circle at 20% 60%, rgba(14, 165, 233, 0.035) 0%, transparent 700px),
-        radial-gradient(circle at 80% 75%, rgba(14, 165, 233, 0.035) 0%, transparent 700px),
-        radial-gradient(circle at 50% 98%, rgba(14, 165, 233, 0.04) 0%, transparent 800px);
+        radial-gradient(circle at 50% 5%, rgba(14, 165, 233, 0.15) 0%, transparent 600px),
+        radial-gradient(circle at 10% 25%, rgba(14, 165, 233, 0.1) 0%, transparent 800px),
+        radial-gradient(circle at 90% 45%, rgba(14, 165, 233, 0.08) 0%, transparent 800px),
+        radial-gradient(circle at 20% 65%, rgba(14, 165, 233, 0.12) 0%, transparent 800px),
+        radial-gradient(circle at 80% 85%, rgba(14, 165, 233, 0.08) 0%, transparent 800px),
+        radial-gradient(circle at 50% 98%, rgba(14, 165, 233, 0.15) 0%, transparent 800px);
 }
 
 ::selection {
@@ -269,30 +270,7 @@ section {
     overflow: hidden;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(ellipse at 50% 40%, black 10%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 10%, transparent 70%);
-    z-index: -1;
-    pointer-events: none;
-}
 
-.hero::after {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%; right: -50%; bottom: -50%;
-    background: 
-        radial-gradient(circle at 60% 30%, rgba(14, 165, 233, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 40% 70%, rgba(14, 165, 233, 0.08) 0%, transparent 40%);
-    z-index: -2;
-    pointer-events: none;
-}
 
 .hero-greeting {
     color: var(--accent);
