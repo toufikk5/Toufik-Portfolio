@@ -4,14 +4,14 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // 1. Navbar Hide/Show on Scroll
     let lastScrollTop = 0;
     const navbar = document.querySelector('.navbar');
-    
+
     window.addEventListener('scroll', () => {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
+
         if (scrollTop > lastScrollTop && scrollTop > 100) {
             // Downscroll - hide navbar
             navbar.classList.add('hidden');
@@ -19,14 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Upscroll - show navbar
             navbar.classList.remove('hidden');
         }
-        
+
         // Add a class if we are at the top to remove the border/bg if desired
         if (scrollTop === 0) {
             navbar.style.boxShadow = 'none';
         } else {
             navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
         }
-        
+
         lastScrollTop = scrollTop;
     });
 
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    
+
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', () => {
             // Simple toggle for demonstration. 
@@ -77,12 +77,149 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 4. Premium Project Screenshot Gallery
-    const screenshots = [
-        { image: "images/home.png", title: "Home" },
-        { image: "images/assessment.png", title: "Assessment" },
-        { image: "images/loading.png", title: "Loading" },
-        { image: "images/results.png", title: "Results" }
+    const projectsData = [
+        {
+            title: 'LearnFirst',
+            subtitle: 'AI Startup Branding Assistant',
+            description: 'LearnFirst is an AI-powered web application that helps startup founders receive personalized branding recommendations using a Weighted Scoring Model (WSM) and AI-generated insights.',
+            tech: 'HTML &bull; CSS &bull; JavaScript &bull; WSM &bull; LLM',
+            role: [
+                'Frontend Development',
+                'UI Design',
+                'Presentation'
+            ],
+            linkMessage: 'The public demo of LearnFirst is currently under development. It will be available soon.',
+            screenshots: [
+                { image: "images/home.png", title: "Home" },
+                { image: "images/assessment.png", title: "Assessment" },
+                { image: "images/loading.png", title: "Loading" },
+                { image: "images/results.png", title: "Results" }
+            ]
+        },
+        {
+            title: 'Micro Jam',
+            subtitle: 'Hackathon Game Project',
+            description: 'A 2D Unity game developed during the USTHB Micro Jam hackathon as part of a multidisciplinary team. I contributed to gameplay implementation, game design, and audio integration while collaborating with teammates under tight time constraints.',
+            tech: 'Unity &bull; C# &bull; Git &bull; GitHub &bull; Game Design',
+            role: [
+                'Unity Development (C#)',
+                'Game Design',
+                'Audio System Configuration',
+                'Team Collaboration'
+            ],
+            linkMessage: 'The public demo of Micro Jam is currently under development. It will be available soon.',
+            screenshots: [
+                { image: "placeholder", title: "Placeholder 1" },
+                { image: "placeholder", title: "Placeholder 2" }
+            ]
+        }
     ];
+
+    const titleEl = document.getElementById('project-title');
+    const subtitleEl = document.getElementById('project-subtitle');
+    const descEl = document.getElementById('project-desc');
+    const techEl = document.getElementById('project-tech');
+    const roleListEl = document.getElementById('project-role-list');
+    const projectPagination = document.getElementById('project-pagination');
+    const projectCard = document.querySelector('.featured-project-card');
+    const viewProjectBtn = document.getElementById('btn-view-project');
+
+    let currentProjectIndex = 0;
+    let activeProject = projectsData[0];
+
+    // Generate pagination dots (indicators only — not clickable)
+    if (projectPagination) {
+        projectsData.forEach((proj, idx) => {
+            const dot = document.createElement('span');
+            dot.className = 'project-dot' + (idx === 0 ? ' active' : '');
+            dot.setAttribute('aria-hidden', 'true');
+            projectPagination.appendChild(dot);
+        });
+    }
+
+    // Arrow navigation
+    const projectPrevBtn = document.getElementById('project-prev');
+    const projectNextBtn = document.getElementById('project-next');
+
+    if (projectPrevBtn) {
+        projectPrevBtn.addEventListener('click', () => {
+            const idx = (currentProjectIndex - 1 + projectsData.length) % projectsData.length;
+            switchProject(idx);
+        });
+    }
+
+    if (projectNextBtn) {
+        projectNextBtn.addEventListener('click', () => {
+            const idx = (currentProjectIndex + 1) % projectsData.length;
+            switchProject(idx);
+        });
+    }
+
+    function switchProject(index) {
+        currentProjectIndex = index;
+
+        // Update dots visual
+        Array.from(projectPagination.children).forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === index);
+        });
+
+        // Fade out
+        if (projectCard) {
+            projectCard.style.opacity = '0';
+            projectCard.style.transform = 'scale(0.98)';
+            projectCard.style.pointerEvents = 'none';
+        }
+
+        setTimeout(() => {
+            activeProject = projectsData[index];
+
+            if (titleEl) {
+                titleEl.textContent = activeProject.title;
+                subtitleEl.textContent = activeProject.subtitle;
+                descEl.textContent = activeProject.description;
+                techEl.innerHTML = activeProject.tech;
+
+                roleListEl.innerHTML = '';
+                activeProject.role.forEach(roleItem => {
+                    const li = document.createElement('li');
+                    li.textContent = roleItem;
+                    roleListEl.appendChild(li);
+                });
+            }
+
+            if (activeProject.linkMessage) {
+                const liveBtn = document.getElementById('btn-view-project');
+                if (liveBtn) liveBtn.dataset.toastMessage = activeProject.linkMessage;
+            }
+
+            renderGallery();
+
+            // Fade in
+            if (projectCard) {
+                projectCard.style.opacity = '1';
+                projectCard.style.transform = 'scale(1)';
+                projectCard.style.pointerEvents = 'auto';
+            }
+        }, 300);
+    }
+
+    // Initial project render
+    if (titleEl) {
+        titleEl.textContent = activeProject.title;
+        subtitleEl.textContent = activeProject.subtitle;
+        descEl.textContent = activeProject.description;
+        techEl.innerHTML = activeProject.tech;
+
+        activeProject.role.forEach(roleItem => {
+            const li = document.createElement('li');
+            li.textContent = roleItem;
+            roleListEl.appendChild(li);
+        });
+
+        if (viewProjectBtn && activeProject.linkMessage) {
+            viewProjectBtn.dataset.toastMessage = activeProject.linkMessage;
+        }
+    }
 
     const galleryView = document.getElementById('gallery-view');
     const galleryCounter = document.getElementById('gallery-counter');
@@ -93,172 +230,192 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentSlideIndex = 0;
 
-    if (galleryView && screenshots.length > 0) {
-        // Initialize slides and dots
-        screenshots.forEach((shot, index) => {
-            // Slide
-            const slide = document.createElement('div');
-            slide.classList.add('gallery-slide');
-            
-            if (shot.image === "placeholder" || !shot.image) {
-                slide.classList.add('is-placeholder');
-                const textSpan = document.createElement('span');
-                textSpan.textContent = shot.title + " (Placeholder)";
-                slide.appendChild(textSpan);
-            } else {
-                const img = document.createElement('img');
-                img.src = shot.image;
-                img.alt = shot.title;
-                slide.appendChild(img);
-            }
+    const renderGallery = () => {
+        if (!galleryView) return;
+        currentSlideIndex = 0;
+        const screenshots = activeProject.screenshots;
 
-            // Click to open modal
-            slide.addEventListener('click', () => {
-                if (slide.classList.contains('stack-0')) {
-                    openModal(currentSlideIndex);
+        galleryView.innerHTML = '';
+        galleryDots.innerHTML = '';
+
+        if (screenshots.length > 0) {
+            screenshots.forEach((shot, index) => {
+                // Slide
+                const slide = document.createElement('div');
+                slide.classList.add('gallery-slide');
+
+                if (shot.image === "placeholder" || !shot.image) {
+                    slide.classList.add('is-placeholder');
+                    const textSpan = document.createElement('span');
+                    textSpan.textContent = shot.title + " (Placeholder)";
+                    slide.appendChild(textSpan);
+                } else {
+                    const img = document.createElement('img');
+                    img.src = shot.image;
+                    img.alt = shot.title;
+                    slide.appendChild(img);
                 }
+
+                // Click to open modal
+                slide.addEventListener('click', () => {
+                    if (slide.classList.contains('stack-0')) {
+                        openModal(currentSlideIndex);
+                    }
+                });
+
+                galleryView.appendChild(slide);
+
+                // Dot
+                const dot = document.createElement('button');
+                dot.classList.add('gallery-dot');
+                dot.setAttribute('aria-label', `Go to ${shot.title}`);
+                dot.addEventListener('click', () => {
+                    currentSlideIndex = index;
+                    updateGallery();
+                });
+                galleryDots.appendChild(dot);
             });
+        }
+        updateGallery();
+    };
 
-            galleryView.appendChild(slide);
-
-            // Dot
-            const dot = document.createElement('button');
-            dot.classList.add('gallery-dot');
-            dot.setAttribute('aria-label', `Go to ${shot.title}`);
-            dot.addEventListener('click', () => {
-                currentSlideIndex = index;
-                updateGallery();
-            });
-            galleryDots.appendChild(dot);
-        });
-
+    const updateGallery = () => {
+        if (!galleryView) return;
         const slides = Array.from(galleryView.querySelectorAll('.gallery-slide'));
         const dots = Array.from(galleryDots.querySelectorAll('.gallery-dot'));
+        const total = slides.length;
+        if (total === 0) return;
 
-        const updateGallery = () => {
-            const total = slides.length;
-            
-            // Assign stack classes based on relative distance
-            slides.forEach((slide, idx) => {
-                // Remove previous stack classes
-                slide.className = 'gallery-slide' + (slide.classList.contains('is-placeholder') ? ' is-placeholder' : '');
-                
-                let dist = (idx - currentSlideIndex + total) % total;
-                
-                if (dist === 0) {
-                    slide.classList.add('stack-0');
-                } else if (dist === 1) {
-                    slide.classList.add('stack-1');
-                } else if (dist === 2) {
-                    slide.classList.add('stack-2');
-                }
-            });
+        // Assign stack classes based on relative distance
+        slides.forEach((slide, idx) => {
+            // Remove previous stack classes
+            slide.className = 'gallery-slide' + (slide.classList.contains('is-placeholder') ? ' is-placeholder' : '');
 
-            // Update dots
-            dots.forEach((dot, idx) => {
-                if (idx === currentSlideIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
+            let dist = (idx - currentSlideIndex + total) % total;
 
-            // Update text
-            galleryCounter.textContent = `${currentSlideIndex + 1} / ${total}`;
-            galleryLabel.style.opacity = 0;
-            setTimeout(() => {
-                galleryLabel.textContent = screenshots[currentSlideIndex].title;
-                galleryLabel.style.opacity = 1;
-            }, 150);
-        };
+            if (dist === 0) {
+                slide.classList.add('stack-0');
+            } else if (dist === 1) {
+                slide.classList.add('stack-1');
+            } else if (dist === 2) {
+                slide.classList.add('stack-2');
+            }
+        });
 
+        // Update dots
+        dots.forEach((dot, idx) => {
+            if (idx === currentSlideIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+
+        // Update text
+        galleryCounter.textContent = `${currentSlideIndex + 1} / ${total}`;
+        galleryLabel.style.opacity = 0;
+        setTimeout(() => {
+            galleryLabel.textContent = activeProject.screenshots[currentSlideIndex].title;
+            galleryLabel.style.opacity = 1;
+        }, 150);
+    };
+
+    if (btnPrev && btnNext) {
         btnPrev.addEventListener('click', (e) => {
             e.preventDefault();
-            currentSlideIndex = (currentSlideIndex - 1 + screenshots.length) % screenshots.length;
+            const len = activeProject.screenshots.length;
+            if (!len) return;
+            currentSlideIndex = (currentSlideIndex - 1 + len) % len;
             updateGallery();
         });
 
         btnNext.addEventListener('click', (e) => {
             e.preventDefault();
-            currentSlideIndex = (currentSlideIndex + 1) % screenshots.length;
+            const len = activeProject.screenshots.length;
+            if (!len) return;
+            currentSlideIndex = (currentSlideIndex + 1) % len;
             updateGallery();
         });
-
-        // Initialize
-        updateGallery();
-
-        // 5. Fullscreen Modal Logic
-        const modal = document.getElementById('gallery-modal');
-        const modalBackdrop = modal.querySelector('.gallery-modal-backdrop');
-        const modalCloseBtn = document.getElementById('modal-close');
-        const modalPrevBtn = document.getElementById('modal-prev');
-        const modalNextBtn = document.getElementById('modal-next');
-        const modalImage = document.getElementById('modal-image');
-        const modalLabel = document.getElementById('modal-label');
-        
-        let modalCurrentIndex = 0;
-
-        const updateModal = () => {
-            const shot = screenshots[modalCurrentIndex];
-            modalLabel.textContent = shot.title;
-            
-            // Handle placeholder vs image
-            const existingPlaceholder = modal.querySelector('.modal-placeholder');
-            if (existingPlaceholder) existingPlaceholder.remove();
-            
-            if (shot.image === "placeholder" || !shot.image) {
-                modalImage.style.display = 'none';
-                const placeholder = document.createElement('div');
-                placeholder.classList.add('modal-placeholder');
-                placeholder.textContent = shot.title + " (Placeholder)";
-                modal.querySelector('.gallery-modal-content').insertBefore(placeholder, modalNextBtn);
-            } else {
-                modalImage.style.display = 'block';
-                modalImage.src = shot.image;
-                modalImage.alt = shot.title;
-            }
-        };
-
-        const openModal = (index) => {
-            modalCurrentIndex = index;
-            updateModal();
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // prevent scrolling
-        };
-
-        const closeModal = () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        };
-
-        modalCloseBtn.addEventListener('click', closeModal);
-        modalBackdrop.addEventListener('click', closeModal);
-        
-        modalPrevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            modalCurrentIndex = (modalCurrentIndex - 1 + screenshots.length) % screenshots.length;
-            updateModal();
-        });
-
-        modalNextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            modalCurrentIndex = (modalCurrentIndex + 1) % screenshots.length;
-            updateModal();
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (!modal.classList.contains('active')) return;
-            if (e.key === 'Escape') closeModal();
-            if (e.key === 'ArrowLeft') {
-                modalCurrentIndex = (modalCurrentIndex - 1 + screenshots.length) % screenshots.length;
-                updateModal();
-            }
-            if (e.key === 'ArrowRight') {
-                modalCurrentIndex = (modalCurrentIndex + 1) % screenshots.length;
-                updateModal();
-            }
-        });
     }
+
+    // Initialize first gallery
+    renderGallery();
+
+    // 5. Fullscreen Modal Logic
+    const modal = document.getElementById('gallery-modal');
+    const modalBackdrop = modal.querySelector('.gallery-modal-backdrop');
+    const modalCloseBtn = document.getElementById('modal-close');
+    const modalPrevBtn = document.getElementById('modal-prev');
+    const modalNextBtn = document.getElementById('modal-next');
+    const modalImage = document.getElementById('modal-image');
+    const modalLabel = document.getElementById('modal-label');
+
+    let modalCurrentIndex = 0;
+
+    const updateModal = () => {
+        const shot = activeProject.screenshots[modalCurrentIndex];
+        modalLabel.textContent = shot.title;
+
+        // Handle placeholder vs image
+        const existingPlaceholder = modal.querySelector('.modal-placeholder');
+        if (existingPlaceholder) existingPlaceholder.remove();
+
+        if (shot.image === "placeholder" || !shot.image) {
+            modalImage.style.display = 'none';
+            const placeholder = document.createElement('div');
+            placeholder.classList.add('modal-placeholder');
+            placeholder.textContent = shot.title + " (Placeholder)";
+            modal.querySelector('.gallery-modal-content').insertBefore(placeholder, modalNextBtn);
+        } else {
+            modalImage.style.display = 'block';
+            modalImage.src = shot.image;
+            modalImage.alt = shot.title;
+        }
+    };
+
+    const openModal = (index) => {
+        modalCurrentIndex = index;
+        updateModal();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // prevent scrolling
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+
+    modalPrevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const len = activeProject.screenshots.length;
+        modalCurrentIndex = (modalCurrentIndex - 1 + len) % len;
+        updateModal();
+    });
+
+    modalNextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const len = activeProject.screenshots.length;
+        modalCurrentIndex = (modalCurrentIndex + 1) % len;
+        updateModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('active')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') {
+            const len = activeProject.screenshots.length;
+            modalCurrentIndex = (modalCurrentIndex - 1 + len) % len;
+            updateModal();
+        }
+        if (e.key === 'ArrowRight') {
+            const len = activeProject.screenshots.length;
+            modalCurrentIndex = (modalCurrentIndex + 1) % len;
+            updateModal();
+        }
+    });
 
     // 6. "Coming Soon" Toast for Email & LinkedIn
     let toastEl = null;
@@ -373,7 +530,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.parentNode.replaceChild(clone, btn);
                 clone.addEventListener('click', function (e) {
                     e.preventDefault();
-                    showToast(item.message);
+                    var msg = this.dataset.toastMessage || item.message;
+                    showToast(msg);
                 });
             }
         });

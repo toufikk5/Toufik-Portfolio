@@ -352,27 +352,33 @@
         <section id="projects" class="projects section-reveal">
             <div class="container">
                 <h2 class="section-title">Selected Projects</h2>
+                
+                <div class="project-nav">
+                    <button class="project-nav-btn" id="project-prev" aria-label="Previous project">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="project-dots" id="project-pagination"></div>
+                    <button class="project-nav-btn" id="project-next" aria-label="Next project">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
                 <div class="featured-project-card">
                     <div class="project-content">
                         <p class="project-overline">FEATURED WORK</p>
-                        <h3 class="project-title">LearnFirst</h3>
-                        <p class="project-subtitle">AI Startup Branding Assistant</p>
-                        <p class="project-desc">
-                            LearnFirst is an AI-powered web application that helps startup founders receive personalized
-                            branding recommendations using a Weighted Scoring Model (WSM) and AI-generated insights.
-                        </p>
+                        <h3 class="project-title" id="project-title"></h3>
+                        <p class="project-subtitle" id="project-subtitle"></p>
+                        <p class="project-desc" id="project-desc"></p>
 
-                        <div class="project-tech-inline">
-                            HTML &bull; CSS &bull; JavaScript &bull; WSM &bull; LLM
-                        </div>
+                        <div class="project-tech-inline" id="project-tech"></div>
 
                         <div class="project-role">
                             <h4>My Role</h4>
-                            <ul>
-                                <li>Frontend Development</li>
-                                <li>UI Design</li>
-                                <li>Presentation</li>
-                            </ul>
+                            <ul id="project-role-list"></ul>
                         </div>
 
                         <div class="project-actions">
