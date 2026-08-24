@@ -79,6 +79,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Premium Project Screenshot Gallery
     const projectsData = [
         {
+            title: 'Telegram File Sorter',
+            subtitle: 'Python Desktop Automation Application',
+            description: 'A standalone Windows desktop application that connects to the user\'s own Telegram account, lets them select a group and a topic, and automatically downloads course documents into an organized local folder. Tracks previously downloaded files via a local JSON log to prevent duplicates, and includes an optional one-click conversion of downloaded files to PDF using LibreOffice running silently in the background. Telegram sync and file conversion run in a dedicated background thread so the GUI stays fully responsive at all times.',
+            tech: 'Python &bull; Telethon &bull; CustomTkinter &bull; asyncio &bull; PyInstaller',
+            role: [
+                'Application Architecture',
+                'Telegram API Integration',
+                'Async / Threading Design',
+                'GUI Development',
+                'PyInstaller Packaging'
+            ],
+            githubUrl: 'https://github.com/toufikk5/Telegram-Files-Manager',
+            screenshots: [
+                { image: "placeholder", title: "App Interface" },
+                { image: "placeholder", title: "File Download" },
+                { image: "placeholder", title: "Conversion" }
+            ]
+        },
+        {
             title: 'LearnFirst',
             subtitle: 'AI Startup Branding Assistant',
             description: 'LearnFirst is an AI-powered web application that helps startup founders receive personalized branding recommendations using a Weighted Scoring Model (WSM) and AI-generated insights.',
@@ -187,9 +206,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            if (activeProject.linkMessage) {
-                const liveBtn = document.getElementById('btn-view-project');
-                if (liveBtn) liveBtn.dataset.toastMessage = activeProject.linkMessage;
+            // Update the View Project button behaviour
+            const liveBtn = document.getElementById('btn-view-project');
+            if (liveBtn) {
+                if (activeProject.githubUrl) {
+                    liveBtn.dataset.githubUrl = activeProject.githubUrl;
+                    delete liveBtn.dataset.toastMessage;
+                    liveBtn.textContent = 'View on GitHub';
+                } else {
+                    delete liveBtn.dataset.githubUrl;
+                    liveBtn.dataset.toastMessage = activeProject.linkMessage || '';
+                    liveBtn.textContent = 'View Project';
+                }
             }
 
             renderGallery();
@@ -216,8 +244,15 @@ document.addEventListener('DOMContentLoaded', () => {
             roleListEl.appendChild(li);
         });
 
-        if (viewProjectBtn && activeProject.linkMessage) {
-            viewProjectBtn.dataset.toastMessage = activeProject.linkMessage;
+        // Set initial button state
+        if (viewProjectBtn) {
+            if (activeProject.githubUrl) {
+                viewProjectBtn.dataset.githubUrl = activeProject.githubUrl;
+                viewProjectBtn.textContent = 'View on GitHub';
+            } else if (activeProject.linkMessage) {
+                viewProjectBtn.dataset.toastMessage = activeProject.linkMessage;
+                viewProjectBtn.textContent = 'View Project';
+            }
         }
     }
 
@@ -515,10 +550,6 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 id: 'contact-linkedin',
                 message: 'I\u2019m currently setting up this contact method. Please check back soon.'
-            },
-            {
-                id: 'btn-view-project',
-                message: 'The public demo of LearnFirst is currently under development. It will be available soon.'
             }
         ];
 
@@ -535,6 +566,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+
+        // Handle the view-project button separately so it can open a GitHub link or show a toast
+        var viewProjectBtn = document.getElementById('btn-view-project');
+        if (viewProjectBtn) {
+            var clonedBtn = viewProjectBtn.cloneNode(true);
+            viewProjectBtn.parentNode.replaceChild(clonedBtn, viewProjectBtn);
+            clonedBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var githubUrl = this.dataset.githubUrl;
+                if (githubUrl) {
+                    window.open(githubUrl, '_blank', 'noopener,noreferrer');
+                } else {
+                    var msg = this.dataset.toastMessage || 'The demo for this project is currently under development. Please check back soon.';
+                    showToast(msg);
+                }
+            });
+        }
     }
 
     if (document.readyState === 'loading') {
