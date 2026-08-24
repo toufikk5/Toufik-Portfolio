@@ -92,9 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             githubUrl: 'https://github.com/toufikk5/Telegram-Files-Manager',
             screenshots: [
-                { image: "placeholder", title: "App Interface" },
-                { image: "placeholder", title: "File Download" },
-                { image: "placeholder", title: "Conversion" }
+                { image: "file_sorter_images/iamge_1.JPG", title: "App Interface" },
+                { image: "file_sorter_images/iamge_2.JPG", title: "File Download" },
+                { image: "file_sorter_images/image_3.JPG", title: "Conversion" },
+                { image: "file_sorter_images/image_4.JPG", title: "Settings" },
+                { image: "file_sorter_images/image_5.JPG", title: "Progress" },
+                { image: "file_sorter_images/image_6.JPG", title: "Output" }
             ]
         },
         {
